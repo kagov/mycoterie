@@ -11,9 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
-    "express-logging": "^1.1.1",
-    "logops": "^2.1.0",
-    "socket.io": "^2.0.4",
-    "webpack": "^3.10.0"
+    "socket.io": "^2.0.4"
   }
 }
