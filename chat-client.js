@@ -66,6 +66,9 @@ else {
 function sendClick() {
 
     var text = document.getElementById('chat_input_box').value;
+    if (text == null || text === '') {
+        return;
+    }
     addChatBubble(text,'chasitorBubble');
     var chat = {
         type : 'chasitorBubble',
