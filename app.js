@@ -26,6 +26,10 @@ app.get('/main.css', function(req, res){
     res.sendFile(__dirname + '/favicon.ico');
   });  
 
+  app.get('/trench.ttf', function(req, res){
+    res.sendFile(__dirname + '/trench.ttf');
+  });
+  
 io.on('connection', function(socket){
 
   socket.on('chat_message', function(msg){
