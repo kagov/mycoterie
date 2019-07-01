@@ -17,7 +17,7 @@ $(document).ready(function(){
         }
         for (var i = 0; i < bChats.length; i++) {
             var chat = bChats[i];
-            addChatBubble(chat.msg,chat.type);
+            addChatBubble(chat.msg, chat.time, chat.type);
         }    
     }
     else {
@@ -28,7 +28,7 @@ $(document).ready(function(){
         }
         for (var i = 0; i < chats.length; i++) {
             var chat = chats[i];
-            addChatBubble(chat.msg,chat.type);
+            addChatBubble(chat.msg, chat.time, chat.type);
         }    
     }
     
@@ -38,10 +38,12 @@ if(isBrin()) {
     socket.on('message_from_kaushik', function(msg){
 
         console.log("message from kaushik-- ",msg);
-        addChatBubble(msg,'agentBubble');    
+        var time = new Date().toLocaleTimeString();
+        addChatBubble(msg,time,'agentBubble');    
         var chat = {
             type : 'agentBubble',
-            msg : msg
+            msg : msg,
+            time : time
         }
         bChats.push(chat)
         localStorage.setItem("bChats", JSON.stringify(bChats));
@@ -51,10 +53,12 @@ else {
     socket.on('message_from_brin', function(msg){
 
         console.log("message from brin-- ",msg);    
-        addChatBubble(msg,'agentBubble');
+        var time = new Date().toLocaleTimeString();
+        addChatBubble(msg,time,'agentBubble');
         var chat = {
             type : 'agentBubble',
-            msg : msg
+            msg : msg,
+            time : time
         }
         chats.push(chat)
         localStorage.setItem("chats", JSON.stringify(chats));
@@ -69,10 +73,12 @@ function sendClick() {
     if (text == null || text === '') {
         return;
     }
-    addChatBubble(text,'chasitorBubble');
+    var time = new Date().toLocaleTimeString();
+    addChatBubble(text,time,'chasitorBubble');
     var chat = {
         type : 'chasitorBubble',
-        msg : text
+        msg : text,
+        time : time
     }
     
     document.getElementById('chat_input_box').value = '';
@@ -91,7 +97,7 @@ function sendClick() {
 }
 
 
-function addChatBubble(messageText, type) {
+function addChatBubble(messageText, date, type) {
     var chasitorBubble = document.createElement('div');
     chasitorBubble.classList.add('chat-bubble' , type);
 
@@ -99,7 +105,8 @@ function addChatBubble(messageText, type) {
     messageDiv.className = 'chat-message';
 
     var message = document.createElement('p');
-    message.innerHTML = messageText;
+    var dateStr = "<span class = time-text>" + date + "</span>";
+    message.innerHTML = messageText +"<br/>"+ dateStr;
 
     messageDiv.appendChild(message);
     chasitorBubble.appendChild(messageDiv);

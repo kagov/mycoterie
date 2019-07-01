@@ -21,6 +21,10 @@ app.get('/main.css', function(req, res){
   app.get('/chat-client.js', function(req, res){
     res.sendFile(__dirname + '/chat-client.js');
   });  
+  
+  app.get('/favicon.ico', function(req, res){
+    res.sendFile(__dirname + '/favicon.ico');
+  });  
 
 io.on('connection', function(socket){
 

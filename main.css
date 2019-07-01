@@ -13,7 +13,7 @@
 
 .chasitorBubble {  
     float: right;
-    background : salmon;
+    background : white;
     margin-right: 10px;
     
   }
@@ -72,4 +72,9 @@
     top: 0.2em;
     font-style: italic;
 
+  }
+
+  .time-text {
+    float: right;
+    padding-right: 0.2em;
   }
