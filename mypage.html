@@ -30,7 +30,8 @@
     </div>
 
     <div class="new-message-container">
-        <input id="chat_input_box" class="new-message-box"> </input>
+        <input id="chat_input_box" class="new-message-box" 
+        onKeydown="Javascript: if (event.keyCode==13) sendClick();"> </input>
         <button class="send-message-btn" title="Send" onclick="sendClick()">
             Send
         </button>
