@@ -105,8 +105,14 @@ function addChatBubble(messageText, date, type) {
     messageDiv.className = 'chat-message';
 
     var message = document.createElement('p');
-    var dateStr = "<span class = time-text>" + date + "</span>";
+    
+    if (date == null || date === '') {
+        message.innerHTML = messageText;    
+    }
+    else {
+        var dateStr = "<span class = time-text>" + date + "</span>";
     message.innerHTML = messageText +"<br/>"+ dateStr;
+    }
 
     messageDiv.appendChild(message);
     chasitorBubble.appendChild(messageDiv);
